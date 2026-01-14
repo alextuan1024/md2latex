@@ -28,6 +28,7 @@ Options:
 - `--image-format pdf|png` (default: pdf)
 - `--keep-temp`
 - `--pandoc-path /path/to/pandoc`
+- `--top-level-division chapter|section|...` (default: chapter)
 - `--mmdc-path /path/to/mmdc`
 - `--template /path/to/template.tex`
 - `--verbose`

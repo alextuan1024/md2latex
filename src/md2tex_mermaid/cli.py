@@ -31,6 +31,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pandoc-path", help="Path to pandoc binary")
     parser.add_argument("--mmdc-path", help="Path to mmdc binary")
     parser.add_argument("--template", type=Path, help="Pandoc LaTeX template")
+    parser.add_argument(
+        "--top-level-division",
+        default="chapter",
+        help="Pandoc top-level-division (default: chapter)",
+    )
     parser.add_argument("--verbose", action="store_true", help="Verbose output")
     return parser
 
@@ -62,6 +67,7 @@ def main(argv: list[str] | None = None) -> int:
             image_format=args.image_format,
             keep_temp=args.keep_temp,
             template=template,
+            top_level_division=args.top_level_division,
             verbose=args.verbose,
         )
     except RuntimeError as exc:

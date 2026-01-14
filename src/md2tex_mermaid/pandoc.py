@@ -22,9 +22,17 @@ def pandoc_json_to_latex(
     doc: dict,
     pandoc_path: str,
     template: Path | None,
+    top_level_division: str,
     verbose: bool,
 ) -> str:
-    cmd = [pandoc_path, "-f", "json", "-t", "latex"]
+    cmd = [
+        pandoc_path,
+        "-f",
+        "json",
+        "-t",
+        "latex",
+        f"--top-level-division={top_level_division}",
+    ]
     if template:
         cmd.extend(["--template", str(template)])
     result = run_command(cmd, input_text=json.dumps(doc))

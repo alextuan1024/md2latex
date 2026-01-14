@@ -17,6 +17,7 @@ def convert_markdown_file(
     image_format: str,
     keep_temp: bool,
     template: Path | None,
+    top_level_division: str,
     verbose: bool,
 ) -> None:
     markdown_text = input_path.read_text(encoding="utf-8")
@@ -30,6 +31,7 @@ def convert_markdown_file(
         image_format,
         keep_temp,
         template,
+        top_level_division,
         verbose,
     )
     output_path.write_text(latex, encoding="utf-8")
@@ -44,6 +46,7 @@ def convert_markdown_text(
     image_format: str,
     keep_temp: bool,
     template: Path | None,
+    top_level_division: str,
     verbose: bool,
     renderer: MermaidRenderer | None = None,
 ) -> str:
@@ -59,7 +62,7 @@ def convert_markdown_text(
             doc = transform_document(doc, mermaid_renderer, output_dir)
     else:
         doc = transform_document(doc, renderer, output_dir)
-    return pandoc_json_to_latex(doc, pandoc_path, template, verbose)
+    return pandoc_json_to_latex(doc, pandoc_path, template, top_level_division, verbose)
 
 
 def transform_document(doc: dict, renderer: MermaidRenderer, output_dir: Path) -> dict:
