@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "md2tex-mermaid"
+version = "0.1.0"
+description = "Convert Markdown with Mermaid diagrams to LaTeX"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pandocfilters>=1.5.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+
+[project.scripts]
+md2tex-mermaid = "md2tex_mermaid.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
